@@ -6,8 +6,8 @@ interface Pokemon {
   url: string;
 }
 
-interface FetchPokemonsResult {
-  pokemons: Pokemon[];
+interface FetchPokemonsResult<T> {
+  pokemons: T[];
   isLoading: boolean;
   error: string | null;
 }
@@ -15,7 +15,7 @@ interface FetchPokemonsResult {
 const useFetchPokemons = (
   limit: number,
   offset: number
-): FetchPokemonsResult => {
+): FetchPokemonsResult<Pokemon> => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
